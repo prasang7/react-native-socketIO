@@ -1,0 +1,30 @@
+<script src="bower_components/socket.io-client/dist/socket.io.js">
+</script>
+
+<script>
+	var app = io('http://localhost:8000')
+
+	app.on('alert', function(data){
+		console.log(data)
+	})
+
+	var click = 'ping from client' + Math.random();
+	app.emit('click', click)
+
+</script>
+<!--
+<script>
+	var socket = new WebSocket('ws://localhost:5000');
+
+	socket.onopen = function(event) {
+
+		window.setInterval( function() {
+			socket.send('ping from client: ' + new Date()) 
+		}, 2000)
+
+		socket.onmessage = function(event) {
+			console.log(event.data)
+		}
+	}
+</script>
+-->
